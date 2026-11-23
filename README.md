@@ -68,69 +68,6 @@ gcc -std=c11 -Wall -Wextra -g -Werror driver.c -o c_list
 
 Or just type `make`. **Warnings count as errors:** if gcc prints any warning, your program does not compile and every test scores 0. Fix every warning before you submit.
 
-## Testing your work
-
-Run the visible tests with `make test` (or `python3 tests/run_tests.py`). They show exactly how your output differs from what is expected, with invisible characters marked. The visible tests are:
-
-- `create_basic`: list_create: returns a new, empty list allocated with malloc
-- `destroy_empty`: list_destroy: frees an empty list
-- `destroy_one`: list_destroy: frees a one-node list
-- `destroy_three`: list_destroy: frees every node and the list
-- `destroy_long`: list_destroy: frees a 20-node list
-- `destroy_created`: list_destroy: frees a list made by list_create
-- `push_front_basic`: list_push_front: adds at the front
-- `push_front_empty`: list_push_front: adds to an empty list
-- `push_front_many`: list_push_front: several pushes in a row
-- `push_front_values`: list_push_front: negative and zero values
-- `push_front_long`: list_push_front: adds to a long list
-- `push_back_basic`: list_push_back: adds at the end
-- `push_back_empty`: list_push_back: adds to an empty list (new node is the head)
-- `push_back_one`: list_push_back: adds after a single node
-- `push_back_many`: list_push_back: several pushes in a row
-- `push_back_values`: list_push_back: negative and zero values
-- `push_back_long`: list_push_back: adds to a long list
-- `get_middle`: list_get: reads a middle value
-- `get_first`: list_get: reads index 0
-- `get_last`: list_get: reads the last node
-- `get_at_size`: list_get: the last index works, index == size fails
-- `get_far`: list_get: an index far past the end fails
-- `get_empty`: list_get: any index on an empty list fails
-- `get_every`: list_get: reads every position in turn
-- `get_negative_value`: list_get: reads negative values
-- `pop_front_basic`: list_pop_front: removes the head
-- `pop_front_single`: list_pop_front: removing the only node empties the list
-- `pop_front_empty`: list_pop_front: fails on an empty list
-- `pop_front_all`: list_pop_front: pops until empty, then one more
-- `pop_front_negative`: list_pop_front: pops a negative value
-- `insert_at_middle`: list_insert_at: inserts in the middle
-- `insert_at_head`: list_insert_at: index 0 makes a new head
-- `insert_at_end`: list_insert_at: index == size adds at the end
-- `insert_at_empty`: list_insert_at: index 0 on an empty list
-- `insert_at_past_end`: list_insert_at: index == size works, index size + 1 fails
-- `insert_at_empty_bad`: list_insert_at: index 1 on an empty list fails, then index 0 works
-- `insert_at_far`: list_insert_at: an index far past the end fails, then a valid one works
-- `insert_at_single`: list_insert_at: between head and nothing: index 1 of a one-node list
-- `insert_at_sequence`: list_insert_at: builds a list with inserts at varied positions
-- `insert_at_second_last`: list_insert_at: inserts just before the last node
-- `remove_at_middle`: list_remove_at: removes a middle node
-- `remove_at_head`: list_remove_at: index 0 removes the head
-- `remove_at_last`: list_remove_at: removes the last node
-- `remove_at_single`: list_remove_at: removing the only node empties the list
-- `remove_at_at_size`: list_remove_at: index == size fails, then the last index works
-- `remove_at_empty`: list_remove_at: fails on an empty list
-- `remove_at_far`: list_remove_at: an index far past the end fails, then index 0 works
-- `remove_at_repeat_middle`: list_remove_at: removes index 1 until it fails
-- `remove_at_repeat_last`: list_remove_at: removes the last node until empty
-- `reverse_three`: list_reverse: reverses three nodes
-- `reverse_two`: list_reverse: reverses two nodes
-- `reverse_one`: list_reverse: a one-node list is unchanged
-- `reverse_empty`: list_reverse: an empty list is unchanged
-- `reverse_long`: list_reverse: reverses a 20-node list
-- `reverse_twice`: list_reverse: reversing twice restores the order
-- `reverse_duplicates`: list_reverse: relinks nodes even when values repeat
-
-`tests/run_tests.py` needs Python 3. On Windows, use WSL (recommended) or MSYS2 so that `gcc` and `make` are available.
-
 ## Submitting
 
 **Only the Google Form counts.** Pushing to GitHub is not a submission.
